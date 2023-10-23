@@ -1,0 +1,49 @@
+service: practice-service
+frameworkVersion: "3"
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: us-east-2
+  profile: khaleeq
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action: "*"
+      Resource: "*"
+    
+functions:
+  demoSecretMangerFunc:
+    handler: src/demo.handler
+    events:
+      - http:
+          method: GET
+          path: /
+
+  ssmParameterStoreFunc:
+    handler: src/ssmDemoFunc.handler
+    events:
+      - http:
+          method: GET
+          path: /
+
+  
+# resources:
+#   Resources:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
